@@ -1,0 +1,33 @@
+##---- How to create Git hub with Visual Studio Code. ----##
+
+1. git init
+2. git add * / got add .
+3. git commit -m "Add comment"
+4. git remote add origin add_repo_path      Method 2:  git push --set-upstream origin main
+5. git push -u origin main / master.
+
+
+##---- How to push new chnges in git hub ----##
+
+1. git add .
+2. git status (once the file add then its shows in green color).
+3. git commit -m "Add comment"
+4. git push -u origin main /master.
+
+
+##---- How to crate branch | How to pull and push code code to "Master to branch and branch to master" ----##
+
+1. User is on master/ main branch
+
+    - git checkout -b Add_branch_name
+
+2. How to take code from "master to branch".
+
+    - git pull origin master
+    - git push origin branch_name
+
+3. How to move code from "branch to master"
+
+    - git checkout master
+    - git pull origin branch_name
+    - git push origin master

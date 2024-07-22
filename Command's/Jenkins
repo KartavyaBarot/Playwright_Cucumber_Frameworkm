@@ -1,0 +1,4 @@
+Step 1: Download the "Generic Java package (.war)" file.
+Step 2: Put the file in onle filder and open CMD.
+Step 3: Put this command :- java -jar jenkins.war --enable-future-java -httpPort=9090.
+

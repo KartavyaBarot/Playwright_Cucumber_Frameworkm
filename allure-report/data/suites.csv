@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jul 22 12:54:33 IST 2024","Mon Jul 22 12:54:51 IST 2024","18317","Chrome","Main.spec.js","","","","Client app login for ADIDAS ORIGINAL",""
+"passed","Mon Jul 22 12:54:14 IST 2024","Mon Jul 22 12:54:31 IST 2024","16456","","Main.spec.js","","","","Client app login for IPHONE 13 PRO",""
+"passed","Mon Jul 22 12:53:55 IST 2024","Mon Jul 22 12:54:13 IST 2024","17947","","Main.spec.js","","","","Client app login for ADIDAS ORIGINAL",""
+"passed","Mon Jul 22 12:54:53 IST 2024","Mon Jul 22 12:55:12 IST 2024","18793","Chrome","Main.spec.js","","","","Client app login for IPHONE 13 PRO",""

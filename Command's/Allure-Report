@@ -1,0 +1,3 @@
+npx playwright test tests/Section14.spec.js --headed --reporter=line,allure-playwright
+allure generate ./allure-results --clean
+allure open
