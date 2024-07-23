@@ -20,6 +20,9 @@ class LoginPage
         await this.Login.click();
         await this.page.waitForLoadState('networkidle');
     }
+
 }
+
+
 
 module.exports = {LoginPage}

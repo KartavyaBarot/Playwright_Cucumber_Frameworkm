@@ -1,3 +1,4 @@
+const { test, expect } = require('@playwright/test');
 class CheckOut
 {
     constructor(page)
@@ -19,6 +20,9 @@ class CheckOut
         this.CountryDD = page.locator(".ta-results");
         this.SIemail = page.locator(".user__name [type=text]");
 
+        //validation
+        this.getmail = page.locator("label[type='text']");
+
     }
 
     async GoToCheckOut()
@@ -38,7 +42,7 @@ class CheckOut
 
         await this.ApplyCouponBTN.click();
         await this.page.waitForTimeout(5000);
-        //await expect(this.page.locator("//p[text()='* Coupon Applied']")).toHaveText("* Coupon Applied");       
+        await expect(this.page.locator("//p[text()='* Coupon Applied']")).toHaveText("* Coupon Applied");       
     }
 
     async ShipingInfo(Code,Country)
@@ -59,8 +63,12 @@ class CheckOut
                 }
         }
 
-        //await expect(SIemail.first()).toHaveText(email);
+    }
 
+    async CheckOutPage_Assertion(expectedUsername)
+    {
+        const emailElement = await this.getmail.textContent();
+        expect(emailElement).toBe(expectedUsername);
     }
 }
 

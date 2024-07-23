@@ -1,3 +1,4 @@
+const { test, expect } = require('@playwright/test');
 class place_order
 {
     constructor(page)
@@ -11,6 +12,9 @@ class place_order
         //Go to Orders:
         this.OrdersMenu = page.locator("//button[@routerlink='/dashboard/myorders']");
         this.AllID = page.locator(".ng-star-inserted tr");
+
+        //Assertion
+        this.getID = page.locator("//div[@class='col-text -main']");
        
     }
 
@@ -26,7 +30,7 @@ class place_order
         const NEWID = await ID.split("|")
         const id = NEWID[1].trim();
         this.id = id
-        console.log(this.id)
+        //console.log(this.id)
 
         await this.OrdersMenu.click();
     }
@@ -51,6 +55,15 @@ class place_order
                     }
             }
     
+    
+    }
+
+    async ViewOrder_Assertion()
+    {
+        const Getid = await this.getID.textContent();
+        expect(this.id).toBe(Getid);
+        console.log("ViewOrder page Assertion")
+
     }
 }
 
