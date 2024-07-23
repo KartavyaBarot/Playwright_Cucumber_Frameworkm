@@ -41,7 +41,7 @@ class Dashboard_Page
 
     async validation()
         {
-            console.log("Check Checkout page product name assertion")
+            //console.log("Check Checkout page product name assertion")
             const bool = await this.page.locator("h3:has-text('"+this.AddProduct+"')").isVisible();
             //console.log(bool);
             expect(bool).toBeTruthy();  //Verify the product is available or not on cart page.

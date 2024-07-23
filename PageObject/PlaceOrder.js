@@ -60,6 +60,8 @@ class place_order
 
     async ViewOrder_Assertion()
     {
+        await this.getID.waitFor({ state: 'visible' });
+
         const Getid = await this.getID.textContent();
         expect(this.id).toBe(Getid);
         console.log("ViewOrder page Assertion")

@@ -1,53 +1,64 @@
 const { Given, When, Then } = require('@cucumber/cucumber')
-const {POmanager} = require('../../PageObject/PO_Manager');
-const { test, expect, playwright } = require('@playwright/test');
+const { POmanager } = require('../../PageObject/PO_Manager');
+const {expect} = require('@playwright/test');
+const playwright = require('@playwright/test');
 
 
-Given('a login to Ecommerce application with {username} and {password}', async function (username, password) {
-    // Write code here that turns the phrase above into concrete actions
 
-    const browser = await playwright.chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
+Given('a login to Ecommerce application with {string} and {string}', async function (Username, Password) {
 
-    const MainFile = new POmanager(page);
+  const browser = await playwright.chromium.launch();
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
-    // Log-in 
-    const signin = MainFile.getLoginPage();
-    await signin.goTo();
-    await signin.validLogin(
-                            data.Username,
-                            data.Password
-                        );
+  this.MainFile = new POmanager(page);
+
+  this.MyUsername = Username;
+
+  // Log-in 
+  const signin = this.MainFile.getLoginPage();
+  await signin.goTo();
+  await signin.validLogin(this.MyUsername, Password);
+  
 });
 
+When('Add {string} to cart', async function (ProductName) {
+  this.dashboard = this.MainFile.getDeshboard();
 
-When('Add {string} to cart', async function (string) {
-           // Write code here that turns the phrase above into concrete actions
-
-    // Product Add To cart [Dashboard Page] 
-    const dashboard = MainFile.getDeshboard();
-    await dashboard.AddToCartProduct(data.ProductName);
-    await dashboard.AddToCart();
+  await this.dashboard.AddToCartProduct(ProductName);
+  await this.dashboard.AddToCart();
+  await this.dashboard.validation(); // Assertion
 });
 
 
 Then('verify {string} is displayed in the cart', async function (string) {
-           // Write code here that turns the phrase above into concrete actions
 
-           await dashboard.VerifyProductIsDisplayed(data.ProductName);
-         });
+    await this.dashboard.validation(); //Assertion
+
+});
 
 
-When('Enter valid details and place the Order', async function () {
-           // Write code here that turns the phrase above into concrete actions
+When('Enter valid card details {string},{string},{string},{string},{string},{string},{string},{string} details and place the Order', {timeout: 60000}, // Increase timeout for this step
+  async function (CardNumber, Ex_Date, Ex_Month, CVV, Name, CouponCode, CountyCode, CountryName) {
+  // CheckOut Page    
+  const checkout = this.MainFile.getCheckout();
 
-    const MyOrder = MainFile.getMyoreder();
-    await MyOrder.Order();
-    await MyOrder.OrderManue();
-         });
+  await checkout.GoToCheckOut();
+  await checkout.CardDetails(CardNumber, Ex_Date, Ex_Month, CVV, Name, CouponCode);
+  await checkout.ShipingInfo(CountyCode, CountryName);
 
-Then('verify order is present in the OrderHistory page', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
-         });
+  const expectedUsername = this.MyUsername;
+  await checkout.CheckOutPage_Assertion(expectedUsername); //Assertion
+
+  // Place Order 
+  this.MyOrder = this.MainFile.getMyoreder();
+
+  await this.MyOrder.Order();
+  await this.MyOrder.OrderManue();
+});
+
+Then('verify order is present in the OrderHistory page',{timeout: 60000}, async function () {
+  
+  await this.MyOrder.ViewOrder_Assertion(); //Assertion
+
+});
