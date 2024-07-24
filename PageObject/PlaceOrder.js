@@ -67,11 +67,11 @@ class place_order
 
     async ViewOrder_Assertion()
     {
-        console.log("Test fail assertion")
+        //console.log("Test fail assertion")
 
         const Getid = await this.getID.textContent();
         expect(this.id).toBe(Getid);
-        console.log("ViewOrder page Assertion")
+        //console.log("ViewOrder page Assertion")
 
     }
 }

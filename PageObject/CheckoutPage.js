@@ -46,12 +46,8 @@ class CheckOut {
 
         await this.CountryDD.waitFor();
 
-        await this.CountryDD.locator(`//button//span[text()='${Country}']`).click();
-
-
-        // const elementLocator = `//section[contains(@class, 'ta-results')]//button//span[text()='${Country}']`;
-        // await this.page.locator(elementLocator).click();  // Click the button containing the span with 'India'
-
+        //await this.CountryDD.locator(`//button//span[text()='${Country}']`).click();
+        await this.CountryDD.locator(`//button//span[normalize-space()='${Country}']`).click();
 
         // const CountryoptionsCount = await this.CountryDD.locator("button").count();
 
