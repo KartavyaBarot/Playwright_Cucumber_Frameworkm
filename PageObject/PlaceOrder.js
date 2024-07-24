@@ -13,6 +13,8 @@ class place_order
         this.OrdersMenu = page.locator("//button[@routerlink='/dashboard/myorders']");
         this.AllID = page.locator(".ng-star-inserted tr");
 
+       
+
         //Assertion
         this.getID = page.locator("//div[@class='col-text -main']");
        
@@ -22,8 +24,7 @@ class place_order
     async Order()
     {
         await this.PlaceOrderBTN.click();
-        await this.page.waitForTimeout(5000);
-
+    
         //await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ")
 
         const ID = await this.OrderID.textContent();
@@ -37,30 +38,36 @@ class place_order
 
     async OrderManue()
     {
+        const ViewBTN = this.page.locator(`//tr[contains(., '${this.id}')]//button[text()='View']`);
+        await ViewBTN.click();
+        
 
-        const rowCount = await this.AllID.count();
+        // this.ViewBTN = this.page.locator(`//tr[contains(., '${this.id}')]//button[text()='View']`);
+        // await this.ViewBTN.click();
+    
+        // const rowCount = await this.AllID.count();
 
-        for(let i=0; i<rowCount; ++i)
-            {
-                const final = await this.AllID.nth(i).locator("th");
-                const thcount = await final.count();
+        // for(let i=0; i<rowCount; ++i)
+        //     {
+        //         const final = await this.AllID.nth(i).locator("th");
+        //         const thcount = await final.count();
                 
-                for(let j=0; j<thcount; ++j)
-                    {
-                        if(await final.nth(j).textContent() === this.id)
-                            {
-                                await this.AllID.nth(i).locator("//button[text()='View']").click();
-                                break;
-                            }
-                    }
-            }
+        //         for(let j=0; j<thcount; ++j)
+        //             {
+        //                 if(await final.nth(j).textContent() === this.id)
+        //                     {
+        //                         await this.AllID.nth(i).locator("//button[text()='View']").click();
+        //                         break;
+        //                     }
+        //             }
+        //     }
     
     
     }
 
     async ViewOrder_Assertion()
     {
-        await this.getID.waitFor({ state: 'visible' });
+        console.log("Test fail assertion")
 
         const Getid = await this.getID.textContent();
         expect(this.id).toBe(Getid);

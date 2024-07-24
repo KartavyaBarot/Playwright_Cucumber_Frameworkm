@@ -5,7 +5,7 @@ const playwright = require('@playwright/test');
 
 
 
-Given('a login to Ecommerce application with {string} and {string}', async function (Username, Password) {
+Given('a login to Ecommerce application with {string} and {string}',{timeout: 60000}, async function (Username, Password) {
 
   const browser = await playwright.chromium.launch();
   const context = await browser.newContext();

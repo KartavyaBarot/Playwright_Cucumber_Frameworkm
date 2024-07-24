@@ -8,8 +8,7 @@ class Dashboard_Page
         this.AllProductTitles = page.locator(".card-body b");  
         this.CartBTN = page.locator("//button[@routerlink='/dashboard/cart']");
         //this.AddProduct = "ADIDAS ORIGINAL";
-        this.Mycartvalidation = page.locator("//div[@class='wrap cf']");
-        
+             
     }
 
     async AddToCartProduct(AddProduct)
@@ -17,20 +16,26 @@ class Dashboard_Page
 
     this.AddProduct = AddProduct
 
-    const ProductTitels = await this.AllProductTitles.allTextContents(); 
-    //console.log(ProductTitels)
+    const ProductXpath = `//div // h5 //b[contains(.,'${this.AddProduct}')]/ancestor::div[contains(@class, 'card-body')]//button[text()=' Add To Cart']`;
+    const ProductButton = this.page.locator(ProductXpath);
+    await ProductButton.click();
+   
+    
 
-    const ProcutsCount = await this.AllProduct.count(); 
+    // const ProductTitels = await this.AllProductTitles.allTextContents(); 
+    // //console.log(ProductTitels)
 
-    for(let i=0; i<ProcutsCount; ++i)
-        {
-            const P = await this.AllProduct.nth(i).locator("b").textContent(); 
-            if(P == this.AddProduct)            
-                {
-                    await this.AllProduct.nth(i).locator("text= Add To Cart").click();   //clik the add to cart button.
-                    break;
-                }
-        }
+    // const ProcutsCount = await this.AllProduct.count(); 
+
+    // for(let i=0; i<ProcutsCount; ++i)
+    //     {
+    //         const P = await this.AllProduct.nth(i).locator("b").textContent(); 
+    //         if(P == this.AddProduct)            
+    //             {
+    //                 await this.AllProduct.nth(i).locator("text= Add To Cart").click();   //clik the add to cart button.
+    //                 break;
+    //             }
+    //     }
     }
 
     async AddToCart()
@@ -41,8 +46,10 @@ class Dashboard_Page
 
     async validation()
         {
-            //console.log("Check Checkout page product name assertion")
-            const bool = await this.page.locator("h3:has-text('"+this.AddProduct+"')").isVisible();
+            await this.page.waitForTimeout(2500);
+            console.log("Page network loded pass");
+            
+            const bool = await this.page.locator(`//h3[contains(., '${this.AddProduct}')]`).isVisible();
             //console.log(bool);
             expect(bool).toBeTruthy();  //Verify the product is available or not on cart page.
         }
