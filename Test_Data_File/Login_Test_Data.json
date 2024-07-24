@@ -10,6 +10,20 @@
         "Name": "Test Automation",
         "CouponCode" : "rahulshettyacademy",
         "CountyCode" : "Ind",
-        "CountryName" : "India"
+        "CountryName" : " India"
+    },
+
+    {
+        "Username" : "shetty@yopmail.com",
+        "Password" : "Test@123",
+        "ProductName": "IPHONE 13 PRO",
+        "CardNumber" : "4242 4242 4242 4242",
+        "Ex_Date" : "02",
+        "Ex_Month" : "27",
+        "CVV" : "777",
+        "Name": "QA Automation",
+        "CouponCode" : "rahulshettyacademy",
+        "CountyCode" : "can",
+        "CountryName" : " Canada"
     }
 ]

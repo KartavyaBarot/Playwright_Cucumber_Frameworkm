@@ -1,8 +1,6 @@
 const { test, expect } = require('@playwright/test');
-class CheckOut
-{
-    constructor(page)
-    {
+class CheckOut {
+    constructor(page) {
         this.page = page;
         this.CheckoutBTN = page.locator("//button[normalize-space()='Checkout']");
 
@@ -17,7 +15,7 @@ class CheckOut
 
         // Add Shipping Information:
         this.Country = page.locator("//input[@placeholder='Select Country']");
-        this.CountryDD = page.locator(".ta-results");
+        this.CountryDD = this.page.locator(".ta-results");
         this.SIemail = page.locator(".user__name [type=text]");
 
         //validation
@@ -25,14 +23,12 @@ class CheckOut
 
     }
 
-    async GoToCheckOut()
-    {
+    async GoToCheckOut() {
         await this.CheckoutBTN.click();
         await this.page.waitForLoadState('networkidle');
     }
 
-    async CardDetails(CardNumber,Ex_Date,Ex_Month,CVV,Name,CouponCode)
-    {
+    async CardDetails(CardNumber, Ex_Date, Ex_Month, CVV, Name, CouponCode) {
         await this.CreditCardNumber.fill(CardNumber);
         await this.CardEXdate.selectOption({ label: Ex_Date });
         await this.CardEXmonth.selectOption({ label: Ex_Month });
@@ -42,34 +38,40 @@ class CheckOut
 
         await this.ApplyCouponBTN.click();
         await this.page.waitForTimeout(5000);
-        await expect(this.page.locator("//p[text()='* Coupon Applied']")).toHaveText("* Coupon Applied");       
+        await expect(this.page.locator("//p[text()='* Coupon Applied']")).toHaveText("* Coupon Applied");
     }
 
-    async ShipingInfo(Code,Country)
-    {
-        await this.Country.pressSequentially(Code); 
+    async ShipingInfo(Code, Country) {
+        await this.Country.pressSequentially(Code);
+
         await this.CountryDD.waitFor();
 
-        const CountryoptionsCount = await this.CountryDD.locator("button").count();
+        await this.CountryDD.locator(`//button//span[text()='${Country}']`).click();
 
-        for(let i=0; i<CountryoptionsCount; ++i)
-        {
-            const text = await this.CountryDD.locator("button").nth(i).textContent();
 
-            if(text.trim() === Country)
-                {
-                    await this.CountryDD.locator("button").nth(i).click();
-                    break;
-                }
-        }
+        // const elementLocator = `//section[contains(@class, 'ta-results')]//button//span[text()='${Country}']`;
+        // await this.page.locator(elementLocator).click();  // Click the button containing the span with 'India'
+
+
+        // const CountryoptionsCount = await this.CountryDD.locator("button").count();
+
+        // for(let i=0; i<CountryoptionsCount; ++i)
+        // {
+        //     const text = await this.CountryDD.locator("button").nth(i).textContent();
+
+        //     if(text.trim() === Country)
+        //         {
+        //             await this.CountryDD.locator("button").nth(i).click();
+        //             break;
+        //         }
+        // }
 
     }
 
-    async CheckOutPage_Assertion(expectedUsername)
-    {
+    async CheckOutPage_Assertion(expectedUsername) {
         const emailElement = await this.getmail.textContent();
         expect(emailElement).toBe(expectedUsername);
     }
 }
 
-module.exports = {CheckOut}
+module.exports = { CheckOut }
