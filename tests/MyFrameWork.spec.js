@@ -25,7 +25,7 @@ for (const data of dataset) {
 
         await dashboard.AddToCartProduct(data.ProductName);
         await dashboard.AddToCart()
-        await dashboard.validation(); //Assertion
+        await dashboard.validation(data.ProductName); //Assertion
 
 
         // CheckOut Page    

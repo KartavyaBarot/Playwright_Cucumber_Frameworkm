@@ -5,16 +5,9 @@ const playwright = require('@playwright/test');
 
 
 
-Given('a login to Ecommerce application with {string} and {string}',{timeout: 60000}, async function (Username, Password) {
-
-  const browser = await playwright.chromium.launch();
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
-  this.MainFile = new POmanager(page);
-
+Given('a login to Ecommerce application with {string} and {string}',{timeout: 15000}, async function (Username, Password) {
+ 
   this.MyUsername = Username;
-
   // Log-in 
   const signin = this.MainFile.getLoginPage();
   await signin.goTo();
@@ -27,18 +20,17 @@ When('Add {string} to cart', async function (ProductName) {
 
   await this.dashboard.AddToCartProduct(ProductName);
   await this.dashboard.AddToCart();
-  await this.dashboard.validation(); // Assertion
 });
 
 
-Then('verify {string} is displayed in the cart', async function (string) {
+Then('verify {string} is displayed in the cart', async function (ProductVerify) {
 
-    await this.dashboard.validation(); //Assertion
+    await this.dashboard.validation(ProductVerify); //Assertion
 
 });
 
 
-When('Enter valid card details {string},{string},{string},{string},{string},{string},{string},{string} details and place the Order', {timeout: 60000}, // Increase timeout for this step
+When('Enter valid card details {string},{string},{string},{string},{string},{string},{string},{string} details and place the Order', {timeout: 10000}, // Increase timeout for this step
   async function (CardNumber, Ex_Date, Ex_Month, CVV, Name, CouponCode, CountyCode, CountryName) {
   // CheckOut Page    
   const checkout = this.MainFile.getCheckout();
@@ -57,8 +49,9 @@ When('Enter valid card details {string},{string},{string},{string},{string},{str
   await this.MyOrder.OrderManue();
 });
 
-Then('verify order is present in the OrderHistory page',{timeout: 60000}, async function () {
+Then('verify order is present in the OrderHistory page',{timeout: 10000}, async function () {
   
   await this.MyOrder.ViewOrder_Assertion(); //Assertion
+
 
 });

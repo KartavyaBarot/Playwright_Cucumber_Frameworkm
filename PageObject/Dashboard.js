@@ -44,12 +44,11 @@ class Dashboard_Page
         
     }
 
-    async validation()
+    async validation(VerifyProduct)
         {
             await this.page.waitForTimeout(2500);
-            console.log("Page network loded pass");
             
-            const bool = await this.page.locator(`//h3[contains(., '${this.AddProduct}')]`).isVisible();
+            const bool = await this.page.locator(`//h3[contains(., '${VerifyProduct}')]`).isVisible();
             //console.log(bool);
             expect(bool).toBeTruthy();  //Verify the product is available or not on cart page.
         }
