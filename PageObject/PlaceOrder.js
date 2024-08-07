@@ -72,7 +72,7 @@ class place_order
         const Getid = await this.getID.textContent();
         expect(this.id).toBe(Getid);
         //console.log("ViewOrder page Assertion")
-
+     
     }
 }
 

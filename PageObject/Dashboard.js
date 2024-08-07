@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 class Dashboard_Page
 {
+
     constructor(page)
     {
         this.page = page;
@@ -10,7 +11,6 @@ class Dashboard_Page
         //this.AddProduct = "ADIDAS ORIGINAL";
              
     }
-
     async AddToCartProduct(AddProduct)
     {
 

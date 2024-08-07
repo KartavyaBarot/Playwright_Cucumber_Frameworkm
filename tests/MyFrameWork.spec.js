@@ -54,7 +54,7 @@ for (const data of dataset) {
         await MyOrder.OrderManue();
 
         await MyOrder.ViewOrder_Assertion(); //Assertion
-
+        await page.close();
 
     });
 }

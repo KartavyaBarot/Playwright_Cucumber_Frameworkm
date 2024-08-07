@@ -52,13 +52,5 @@ When('Enter valid card details {string},{string},{string},{string},{string},{str
 Then('verify order is present in the OrderHistory page',{timeout: 10000}, async function () {
   
   await this.MyOrder.ViewOrder_Assertion(); //Assertion
-
-
+  
 });
-
-
-
-
-
-
-
