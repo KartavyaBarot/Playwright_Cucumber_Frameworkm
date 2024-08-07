@@ -1,0 +1,207 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "ecommerce-validation;scenario-outline-name:-placing-order",
+        "keyword": "Scenario Outline",
+        "line": 4,
+        "name": "Scenario Outline name: Placing Order",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2054000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "a login to Ecommerce application with \"kartavyabarot@yopmail.com\" and \"Test@123\"",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3012000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "Add 'ADIDAS ORIGINAL' to cart",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1825000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "verify 'ADIDAS ORIGINAL' is displayed in the cart",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2529000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "Enter valid card details '4242 4242 4242 4242','05','25','121','Sam','rahulshettyacademy','Ind','India' details and place the Order",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6344000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "verify order is present in the OrderHistory page",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Mainfile",
+            "line": 2
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "ecommerce-validation;scenario-outline-name:-placing-order",
+        "keyword": "Scenario Outline",
+        "line": 4,
+        "name": "Scenario Outline name: Placing Order",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1403000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "a login to Ecommerce application with \"shetty@yopmail.com\" and \"Test@123\"",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2771000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "Add 'IPHONE 13 PRO' to cart",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1928000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "verify 'IPHONE 13 PRO' is displayed in the cart",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2517000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "Enter valid card details '4242 4242 4242 4242','02','27','123','Sam','rahulshettyacademy','can','Canada' details and place the Order",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6391000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "verify order is present in the OrderHistory page",
+            "match": {
+              "location": "features\\Step_Defination\\Step.js:52"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Mainfile",
+            "line": 2
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "ecommerce-validation",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Ecommerce Validation",
+    "tags": [],
+    "uri": "features\\Ecommerce.feature"
+  }
+]
